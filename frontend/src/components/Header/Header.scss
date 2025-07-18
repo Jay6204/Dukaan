@@ -24,22 +24,53 @@
             height: 80px;
         }
 
-        .left {
-            list-style-type: none;
-            display: none;
-            gap: 25px;
+                .mobile-menu-icon {
+                    display: block;
+                    font-size: 24px;
+                    cursor: pointer;
+                    z-index: 100;
+        
+                    @include md {
+                        display: none;
+                    }
+                }
 
-            @include md {
-                display: flex;
-            }
-
-            li {
-                font-size: 14px;
-                font-weight: 600;
-                text-transform: uppercase;
-                cursor: pointer;
-            }
-        }
+           .left {
+               display: none;
+               flex-direction: column;
+               position: absolute;
+               top: 50px;
+               left: 0;
+               background-color: #212121;
+               width: 100%;
+               padding: 20px 0;
+               z-index: 99;
+    
+               li {
+                   padding: 10px 20px;
+                   font-size: 16px;
+                   border-bottom: 1px solid #333;
+                   cursor: pointer;
+               }
+    
+               &.open {
+                   display: flex;
+               }
+    
+               @include md {
+                   position: static;
+                   display: flex;
+                   flex-direction: row;
+                   gap: 25px;
+                   background-color: transparent;
+                   padding: 0;
+    
+                   li {
+                       border: none;
+                       padding: 0;
+                   }
+               }
+           }
 
         .center {
             font-size: 22px;
@@ -108,3 +139,5 @@
         transform: translateY(0);
     }
 }
+
+

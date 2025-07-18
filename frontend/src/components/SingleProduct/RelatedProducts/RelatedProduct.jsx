@@ -1,0 +1,5 @@
+
+
+const RelatedProduct = ({ productId, categoryId }) => {
+    
+}

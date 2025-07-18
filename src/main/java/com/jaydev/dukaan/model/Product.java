@@ -1,17 +1,23 @@
 package com.jaydev.dukaan.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 
+@Document(collection = "products")
 public class Product {
-    
+
     @Id
     private String id;
-    private String name;
-    private String description;
+
+    private String title;
+    private String desc;
+
+    private List<String> imageUrls; // since media was multiple
     private double price;
-    private String imageUrl;
-    private String category;
+
+    private List<String> categoryIds; // or List<Category> for embedded refs
 
     // Getters and Setters
     public String getId() {
@@ -22,20 +28,28 @@ public class Product {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
     }
 
     public double getPrice() {
@@ -46,19 +60,11 @@ public class Product {
         this.price = price;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public List<String> getCategoryIds() {
+        return categoryIds;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryIds(List<String> categoryIds) {
+        this.categoryIds = categoryIds;
     }
 }

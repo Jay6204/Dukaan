@@ -1,22 +1,31 @@
 import "./App.css";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
-import HomePage from "./pages/HomePage";
-import ProductListPage from "./pages/ProductListPage";
-import CartPage from "./pages/CartPage";
+import Footer from "./components/Footer/Footer";
+import Newsletter from "./components/Footer/Newsletter/Newsletter";
+import AppContext from "./services/context";
+import Home from "./components/Home/Home";
+import Category from "./components/Category/Category";
+import SingleProduct from "./components/SingleProduct/SingleProduct";
+import Signup from "./components/Account/SignUp";
+import Login from "./components/Account/LogIn";
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <main className="container">
+    <BrowserRouter>
+      <AppContext>
+        <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/products/:category" element={<ProductListPage />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/users/signup" element={<Signup />} />
+          <Route path="/users/login" element={<Login />} />
+          <Route path="/category/:id" element={<Category />} />
+          <Route path="/product/:id" element={<SingleProduct /> } />
         </Routes>
-      </main>
-    </Router>
+        <Newsletter />
+        <Footer />
+      </AppContext>
+    </BrowserRouter>
   );
 }
 
